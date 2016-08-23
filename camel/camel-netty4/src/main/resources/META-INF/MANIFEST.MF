@@ -1,0 +1,2 @@
+Class-Path: lib/*.jar
+Main-Class: /ntf-util/src/main/java/com/kingmed/common/ntf/MyRouteBuilder.java
