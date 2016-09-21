@@ -1,0 +1,7 @@
+/target/
+/bin
+/akka-sample/.settings
+/akka-sample/.project
+/akka-sample/akka-sample-cluster-java/.project
+/akka-sample/akka-sample-cluster-java/.settings
+/akka-sample/akka-sample-cluster-java/.classpath
