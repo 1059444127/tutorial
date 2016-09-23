@@ -168,8 +168,8 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix> 
-							<mainClass>sample.cluster.transformation.TransformationBackendMain</mainClass>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>sample.cluster.transformation.TransformationFrontendMain</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
