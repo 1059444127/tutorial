@@ -23,17 +23,17 @@ public class TransformationFrontendMain {
     // Override the configuration of the port when specified as program argument
     final String port = args.length > 0 ? args[0] : "0";
     final Config config = ConfigFactory.parseString("akka.remote.netty.tcp.port=" + port).
-    							withFallback(ConfigFactory.parseString("akka.cluster.roles = [frontend]")).
-    							withFallback(ConfigFactory.load());
+      withFallback(ConfigFactory.parseString("akka.cluster.roles = [frontend]")).
+      withFallback(ConfigFactory.load());
 
     ActorSystem system = ActorSystem.create("ClusterSystem", config);
 
-    final ActorRef frontend = system.actorOf(Props.create(TransformationFrontend.class), "frontend");
+    final ActorRef frontend = system.actorOf(
+        Props.create(TransformationFrontend.class), "frontend");
     final FiniteDuration interval = Duration.create(2, TimeUnit.SECONDS);
     final Timeout timeout = new Timeout(Duration.create(5, TimeUnit.SECONDS));
     final ExecutionContext ec = system.dispatcher();
     final AtomicInteger counter = new AtomicInteger();
-    
     system.scheduler().schedule(interval, interval, new Runnable() {
       public void run() {
         ask(frontend,
