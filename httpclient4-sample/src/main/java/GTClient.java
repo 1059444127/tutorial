@@ -21,16 +21,17 @@ public class GTClient {
 	public static void testPost() throws Exception {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
-        	String path = "http://localhost:8080/post";
+        	//String path = "http://10.5.5.119:8080/post";
+        	String path = "http://10.9.4.152:11111/GTtService.svc/slideReady";
             HttpPost httppost = new HttpPost(path);
             httppost.addHeader("Content-Type", "application/json;charset=UTF-8"); 
             String content = "{"
-            					+ "'barcode':'', "
-            					+ "'url': 'http://10.63.8.211:8989/UploadService/Slides/05bdc9f0-35dc-4458-b9bc-b58092b89f22?gurl=&token=b8dcf672bc887bc23bf3628b8ea9c209&ts=3059090980499', "
-            					+ "'viewer': 'motic', "
-            					+ "'thumbnail': ''"
+            					+ "\"barcode\":\"P0038_GD001_01_HE\", "
+            					+ "\"url\": \"http://10.63.8.211:8989/UploadService/Slides/05bdc9f0-35dc-4458-b9bc-b58092b89f22?gurl=&token=b8dcf672bc887bc23bf3628b8ea9c209&ts=3059090980499\", "
+            					+ "\"viewer\": \"motic\", "
+            					+ "\"thumbnail\": \"\""
             				+ "}";
-            
+            System.out.println(content);
             StringEntity entry = new StringEntity(content);
             httppost.setEntity(entry);
 
