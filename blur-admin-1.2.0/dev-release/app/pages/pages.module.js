@@ -16,6 +16,7 @@
     'BlurAdmin.pages.charts',
     //'BlurAdmin.pages.maps',
     'BlurAdmin.pages.profile',
+    'BlurAdmin.pages.cst'
   ])
       .config(routeConfig);
 
@@ -58,21 +59,8 @@
       }]
     });
 
+    /*
     //远程诊断
-    baSidebarServiceProvider.addStaticItem({
-      title: '远程诊断',
-      icon: 'ion-document',
-      subMenu: [{
-        title: '未诊断',
-        fixedHref: 'auth.html',
-        blank: true
-      }, {
-        title: '已诊断',
-        fixedHref: 'reg.html',
-        blank: true
-      }]
-    });
-
     $stateProvider
         .state('cst', {
           url: '/tables',
@@ -100,6 +88,8 @@
           },
         });
     $urlRouterProvider.when('/tables','/tables/basic');
+    */
+
   }
 
 })();
