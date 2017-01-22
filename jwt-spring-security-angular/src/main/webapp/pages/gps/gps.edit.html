@@ -1,0 +1,50 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>配置GPS采集仪</h2>
+    <form name="form" ng-submit="vm.doConfig()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.id.$dirty && form.id.$error.required }">
+            <label for="id">设备号</label>
+            <input type="text" name="id" id="id" class="form-control" ng-model="vm.gps.id" required />
+            <span ng-show="form.id.$dirty && form.id.$error.required" class="help-block">设备号不能为空</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.orderNo.$dirty && form.orderNo.$error.required }">
+            <label for="orderNo">订单号</label>
+            <input type="text" name="orderNo" id="Text1" class="form-control" ng-model="vm.gps.orderNo" required />
+            <span ng-show="form.orderNo.$dirty && form.orderNo.$error.required" class="help-block">订单号不能为空</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.boxNo.$dirty && form.boxNo.$error.required }">
+            <label for="boxNo">标本箱号</label>
+            <input type="text" name="boxNo" id="boxNo" class="form-control" ng-model="vm.gps.boxNo" required />
+            <span ng-show="form.boxNo.$dirty && form.boxNo.$error.required" class="help-block">标本箱号不能为空</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.clientName.$dirty && form.clientName.$error.required }">
+            <label for="clientName">用户名称</label>
+            <input type="text" name="clientName" id="clientName" class="form-control" ng-model="vm.gps.clientName" required />
+            <span ng-show="form.clientName.$dirty && form.clientName.$error.requilred" class="help-block">用户名称不能为空</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.al.$dirty && form.al.$error.required }">
+            <label for="al">温度报警阈值低温</label>
+            <input type="text" name="al" id="al" class="form-control" ng-model="vm.gps.al" required />
+            <span ng-show="form.al.$dirty && form.al.$error.required" class="help-block">度报警阈值低温不能为空</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.ah.$dirty && form.ah.$error.required }">
+            <label for="ah">温度报警阈值高温</label>
+            <input type="text" name="ah" id="ah" class="form-control" ng-model="vm.gps.ah" required />
+            <span ng-show="form.ah.$dirty && form.ah.$error.required" class="help-block">温度报警阈值高温不能为空</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.ci.$dirty && form.ci.$error.required }">
+            <label for="ci">采集时间间隔[单位：分钟]</label>
+            <input type="text" name="ci" id="ci" class="form-control" ng-model="vm.gps.ci" required />
+            <span ng-show="form.ci.$dirty && form.ci.$error.required" class="help-block">采集时间间隔不能为空</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.ui.$dirty && form.ui.$error.required }">
+            <label for="ui">上传时间间隔[单位：分钟]</label>
+            <input type="text" name="ui" id="ui" class="form-control" ng-model="vm.gps.ui" required />
+            <span ng-show="form.ui.$dirty && form.ui.$error.required" class="help-block">上传时间间隔不能为空</span>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">保存</button>
+        </div>
+    </form>
+</div>
