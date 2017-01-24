@@ -9,12 +9,23 @@
     function AuthenticationService($http, $cookies, $rootScope, $timeout, UserService) {
         var service = {};
 
-        service.Login = Login;
+        //service.Login = Login;
+        service.Login = jwtLogin;
         service.SetCredentials = SetCredentials;
         service.ClearCredentials = ClearCredentials;
-
+        service.TOKEN_KEY = "jwtToken"
         return service;
 
+        function getJwtToken() {
+            //return localStorage.getItem(TOKEN_KEY);
+        	return localStorage.getItem("jwtToken");
+        }
+
+        function setJwtToken(token) {
+            //localStorage.setItem(TOKEN_KEY, token);
+        	localStorage.setItem("jwtToken", token);
+        }
+        
         function Login(username, password, callback) {
 
             /* Dummy authentication for testing, uses $timeout to simulate api call
@@ -57,6 +68,44 @@
             //        callback(response);
             //    });
 
+        }
+        
+        
+        vm.jwtLogin = jwtLogin;
+
+        function jwtLogin(username, password, callback) {
+            var req = {
+            		 method: 'POST',
+            		 url: '/auth',
+            		 headers: {
+            			   'Content-Type': 'application/json; charset=utf-8'
+            			 },
+            	     data: {
+            	            username: username,
+            	            password: password
+            	        },
+            		 transformResponse: [function (data, headersGetter, status) {
+            		      return data;
+            		  }]
+            		};
+            
+			$timeout(function() {
+				var res;
+				var jwtToken;
+				$http(req).then(function successCallback(response) {
+								res = { success: true };
+								console.log('登录成功');
+								jwtToken = JSON.parse(response.data).token;
+								setJwtToken(jwtToken);
+//								console.log(jwtToken);
+								callback(res);
+						  }, function errorCallback(response) {
+							  	res = { success: false, message: '用户名或者密码错误' };
+							  	console.log('登录失败,');
+							  	callback(res);
+						  });
+			 }, 1000);
+			
         }
 
         function SetCredentials(username, password) {
