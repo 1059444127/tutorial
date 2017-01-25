@@ -8,9 +8,10 @@
     GPSController.$inject = ['GPSService', '$location', '$rootScope', 'FlashService'];
     function GPSController(GPSService, $location, $rootScope, FlashService) {
         var vm = this;
-       
+        
+        vm.get = get;
         vm.doConfig = doConfig;
-
+        
         function doConfig() {
             vm.dataLoading = true;
             GPSService.Create(vm.gps)
@@ -23,6 +24,14 @@
                         vm.dataLoading = false;
                     }
                 });
+        }
+        
+        function get() {
+        	vm.dataLoading = true;
+        	GPSService.Get(vm.gps)
+        		.then(function (response) {
+        			
+        		});
         }
     }
 

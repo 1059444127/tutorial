@@ -3,6 +3,8 @@ package com.kingmed.ccl.gps.wx.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ThermService {
+	private static final Log logger = LogFactory.getLog(ThermService.class);
 	private static final List<Person> persons;
 	private static final List<Therm> therms;
 
@@ -45,6 +48,7 @@ public class ThermService {
      */
     @RequestMapping(path = "/therm/{thermBarcode}", method = RequestMethod.GET)
     public Therm getTherm(@PathVariable("thermBarcode") String thermBarcode) {
+    	logger.info("thermBarcode "  + thermBarcode);
     	//TODO 查询温度计信息，调用TMS API，入参温度计条码，返回值：温度计条码，设备号
         return therms.stream()
                 .filter(therm -> thermBarcode.equalsIgnoreCase(therm.getThermBarcode()))

@@ -32,6 +32,11 @@
                 templateUrl: 'gps/gps.edit.html',
                 controllerAs: 'vm'
             })
+            .when('/gps/search', {
+                controller: 'GPSController',
+                templateUrl: 'gps/gps.search.html',
+                controllerAs: 'vm'
+            })
             .when('/gps/edit/success', {
                 controller: 'GPSController',
                 templateUrl: 'gps/gps.edit.success.html',

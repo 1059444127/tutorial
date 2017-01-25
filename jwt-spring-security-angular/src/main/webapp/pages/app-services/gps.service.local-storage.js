@@ -12,30 +12,48 @@
     		
         var service = {};
 
-        /*service.GetAll = GetAll;
-        service.GetById = GetById;
-        service.GetByUsername = GetByUsername;
         service.Create = Create;
-        service.Update = Update;
-        service.Delete = Delete;*/
-        service.Create = Create;
-        	
+        service.Get = Get;
         
         return service;
 
-        function GetAll() {
-            var deferred = $q.defer();
-            deferred.resolve(getUsers());
-            return deferred.promise;
-        }
-
-        function GetById(id) {
-            var deferred = $q.defer();
+        function Get(gps) {
+        	var token = getJwtToken();
+        	console.log("token = " + token);
+        	console.log("thermBarcode = " + gps.thermBarcode);
+        	var thermBarcode = gps.thermBarcode;
+            var req = {
+           		 method: 'GET',
+           		 url: '/therm/' + thermBarcode,
+           		 headers: {
+           			   //'Content-Type': 'application/json; charset=utf-8',
+           			 	'Authorization': token,
+           			 	'Content-Type': 'text/plain'
+           		 },
+           		 transformResponse: [function (data, headersGetter, status) {
+           		      return data;
+           		  }]
+           		};
+            $http(req)
+	            .then(function(response){
+	          	console.log('1,');
+	          	console.log(response.status);
+	          	console.log(response.data);
+	          }, function(response){
+	          	console.log('2,');
+	          	console.log(response);
+	          	console.log(response.status);
+	          	console.log(response.data);
+	          });
+                  	
+        	
+        	var deferred = $q.defer();
             var filtered = $filter('filter')(getUsers(), { id: id });
             var user = filtered.length ? filtered[0] : null;
             deferred.resolve(user);
             return deferred.promise;
         }
+        
 
         function GetByUsername(username) {
             var deferred = $q.defer();
@@ -108,6 +126,7 @@
         }*/
         
         function Create(gps) {
+        	console.log("gps = " + JSON.stringify(gps));
             var deferred = $q.defer();
 
             // simulate api call with $timeout
