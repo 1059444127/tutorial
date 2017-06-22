@@ -21,7 +21,7 @@ public class WriteLog {
         //每隔两秒log输出一下当前系统时间戳  
         	Long d = new Date().getTime();
         	System.out.println(i ++ );
-        	logger.info(String.valueOf(i));  
+        	logger.info(String.valueOf(i)+"*******************************");  
 /*            if (i%300 == 0)
             	Thread.sleep(5000);  */
             if (i == 300) {
