@@ -1,0 +1,14 @@
+spring: 
+  application:
+    name: dp-consult-obpm
+  cloud:
+    config:
+      obpmDocumentEndpoint: http://10.28.13.185:99/obpm/services/DocumentService
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3310/kmdp?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: kingmed 
+  jpa:
+    show_sql: true
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect

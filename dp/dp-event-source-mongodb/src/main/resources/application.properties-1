@@ -1,0 +1,1 @@
+spring.data.mongodb.uri=mongodb://192.168.0.124:27017/dp-event-source
